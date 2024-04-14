@@ -2,10 +2,9 @@ import './App.css'
 import { useState } from 'react'
 import { buttons } from './assets/buttons'
 import { ButtonsRow } from './components/ButtonsRow'
-
-const numberButtonClasses = 'btn btn-info w-100'
+const numberButtonClasses = 'btn btn-secondary w-100'
 const operatorButtonClasses = 'btn btn-warning w-100'
-const specialButtonClasses = 'btn btn-danger w-100'
+const equalButtonClases = 'btn btn-danger w-100'
 
 function App() {
   const [display, setDisplay] = useState({
@@ -23,7 +22,7 @@ const updateDisplay = (value) => {
     }
     setDisplay({
       ...display,
-      value: display.value + value,
+      value: limit(display.value + value),
       hasPoint: true
     })
     return
@@ -32,7 +31,7 @@ const updateDisplay = (value) => {
   if(display.value === '0'){
     setDisplay({
       ...display,
-      value: limit(value)
+      value: value
     })
   } else {
     setDisplay({
@@ -50,7 +49,7 @@ const clearDisplay =() => {
     })
 }
 
-const deleteCharacter =() => {
+const deleteLastCharacter =() => {
   setDisplay({
     ...display,
     value: display.value.slice(0, -1),
@@ -77,25 +76,22 @@ const setOperator = (operator) => {
 }
 
 const calculate = () => {
+   
+  if(!display.operatorHasBeenPressed) {
+    return
+  }
+  
+  let operator = display.operator ==='%'?'/ 100 *':
+  display.operator ==='X'? '*': display.operator
 
-//  let result = 0
-
-//  if(display.operator === '%'){
-//    resul = eval(`${display.previousValue} /100 * ${display.value}`)
-//  } else {
-//    result = eval(`${display.previousValue} ${display.operator} ${display,value}`)
-//  }
-
-let result = (display.operator === '%')?
-  eval(`${display.previusValue} / 100 * ${display.value}`) :
-  eval(`${display.previousValue} ${display.operator} ${display.value}`)
+  let result = eval(`${display.previousValue} ${operator} ${display.value}`) 
 
   result = result + ""
 
   setDisplay({
     ...display,
-    value: eval(`${display.previousValue} ${display.operator} ${display.value}`),
-    operatorButtonClasses: false,
+    value: result,
+    operatorHasBeenPressed: false,
     hasPoint: result.includes("."),
     previousValue:'0'
   })
@@ -126,14 +122,17 @@ const buttonsFunctions = ({
             {
              buttons.map((row, index) => {
                       return (
-              <ButtonsRow key={index} row ={row} />
+              <ButtonsRow 
+              key={index} 
+              row ={row} 
+              buttonsFuctions={{buttonsFunctions}}/>
             )
           })
         }
 
-          </tbody>
-        </table>
-            </div>
+        </tbody>
+      </table>
+    </div>
     )
 }
 
