@@ -1,15 +1,15 @@
 import { Button } from "./Button"
-export const ButtonsRow = ({row, buttonsFuctions}) => {
+export const ButtonsRow = ({row, buttonsFunctions}) => {
     return(
         <tr>
 
             {
                 row.map((button) => {
                     return(
-                    <Button 
-                    key={button.label}
-                    buttonsFunctions={buttonsFuctions}
-                    {...button}/>
+                        <Button 
+                        key={button.label}
+                        buttonsFunctions={buttonsFunctions}
+                        {...button}/>
                     )
                 })
             }
@@ -19,5 +19,5 @@ export const ButtonsRow = ({row, buttonsFuctions}) => {
 
 ButtonsRow.propTypes = {
     row: 'array',
-    buttonsFunctions: 'object'
+    buttonsFunctions:'object'
 }
