@@ -1,17 +1,19 @@
-import List from "./List"
+import List from './List'
 const tasklist=[
   {
     id:1,
-    task:"Estudiar",
-    limit:"15:00",
-  },{
+    task:'Estudiar',
+    limit:'15:00',
+  },
+  {
     id:2,
-    task:"Practicar",
-    limit:"18:00",
-  },{
+    task:'Practicar',
+    limit:'17:00',
+  },
+  {
     id:3,
-    task:"Dormir",
-    limit:"23:00",
+    task:'Dormir',
+    limit:'22:00',
   },
 ]
 function App() {

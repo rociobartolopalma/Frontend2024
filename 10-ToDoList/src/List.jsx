@@ -1,14 +1,12 @@
-import Listitem from "./Listitem"
-
 const List=({tasklist})=>{
 return (
     <> 
     <div className="row">
       <div className="col-6">
-<h4> Tasks</h4>
+        <h4> {Tasks}</h4>
       </div>
       <div className="col-2">
-<h4>Limit </h4>
+        <h4>{Limit}</h4>
       </div>
       <div className="col">
 <h4> actions</h4>
@@ -17,7 +15,7 @@ return (
     {
         tasklist.map((task)=>{
             return(
-                <Listitem
+                <ListItem
                 key={task.id}
                 task={task.task}
                 limit={task.limit}
