@@ -1,6 +1,6 @@
 import React from "react"
 import ShowItemModal from "./ShowItemModal"
-const Listitem  =({task})=>{
+const ListItem  =({task})=>{
     return(
     <>
     <div className="row m-2">
@@ -22,4 +22,4 @@ const Listitem  =({task})=>{
   </>
     )
 }
-export default Listitem
+export default ListItem
