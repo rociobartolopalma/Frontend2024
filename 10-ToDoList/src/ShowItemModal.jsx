@@ -1,3 +1,6 @@
+import Swal from "sweetalert2"
+import PropTypes from "prop-types"
+
 const ShowItemModal = ({task}) => {
     return (
         <div className="modal fade" id={"showItemModal" +task.id}>
@@ -29,7 +32,10 @@ const ShowItemModal = ({task}) => {
                  <i className="bi bi-trash"></i>
                  Delete
                </button>
-                <button className='btn btn-sm btn-outline-primary'>
+                <button className='btn btn-sm btn-outline-primary'
+                data-bs-target={'#addTaskModal'+task.id}
+                
+                >
                  <i className="bi bi-pencil-square"></i>
                  Edit
                </button>
@@ -42,6 +48,12 @@ const ShowItemModal = ({task}) => {
             </div>
         </div>
     )
+}
+
+ShowItemModal.propTypes = {
+    task: PropTypes.object.isRequired,
+    taskList: PropTypes.array.isRequired,
+    setTaskList:PropTypes.func.isRequired
 }
 
 export default ShowItemModal

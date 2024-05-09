@@ -1,4 +1,6 @@
 import ListItem from "./ListItem"
+import PropTypes from "prop-types"
+
 const List=({taskList})=>{
 
 return (  
@@ -27,5 +29,12 @@ return (
     </>
   )
 }
+
+List.PropTypes = {
+  task: PropTypes.object.isRequired,
+  taskList: PropTypes.array.isRequired,
+  setTaskList:PropTypes.func.isRequired
+}
+
 
 export default List

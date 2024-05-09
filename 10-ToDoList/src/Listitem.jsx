@@ -1,5 +1,7 @@
 import React from "react"
 import ShowItemModal from "./ShowItemModal"
+import PropTypes from "prop-types"
+
 const ListItem  =({task})=>{
     return(
     <>
@@ -22,4 +24,11 @@ const ListItem  =({task})=>{
   </>
     )
 }
+
+ListItem.PropTypes = {
+  task: PropTypes.object.isRequired,
+  taskList: PropTypes.array.isRequired,
+  setTaskList:PropTypes.func.isRequired
+}
+
 export default ListItem

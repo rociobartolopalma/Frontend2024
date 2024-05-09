@@ -1,6 +1,7 @@
 import withReactContent from "sweetalert2-react-content"
 import { useForm } from "./Hooks/UseForm"
 import Swal from "sweetalert2"
+import PropTypes from "prop-types"
 
 const taskInfo = {
     task: '',
@@ -10,13 +11,30 @@ const taskInfo = {
 }
 
 const AddTaskModal = ({taskList, setTaskList}) => {
-    const [values, handleInputChange, reset] = useForm(taskInfo)
+    const [values, handleInputChange, reset] = useForm(task || taskInfo)
 
     const MySwal = withReactContent(Swal)
     
-const handleSaveClick = () => {     
+const handleSaveClick = () => {   
+    let newTaskList = []
+
+    if (task) {
+        newTaskList = taskList.map((taskItem) => {
+            if (taskItem.id === task.id){
+                task.task = values.task
+                task.description = values.description
+                task.location = values.location
+                task.limit = values.limit
+            }
+
+            return taskItem
+        })
+    }else {
+        
+    }
+    
     const newTaskList = [...taskList, {
-        id:taskList.lenght + 1,
+        id:uuidv4(),
         ...values,
         done:false
     }]
@@ -33,22 +51,31 @@ const handleSaveClick = () => {
     })
 }
 
+    const id = task?.id || ''
+
     return (
         <div className="modal fade" id={"addTaskModal"}>
             <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
             <div className="modal-header">
-            <h5 className="modal-title" id="addTaskModal">Add New Task </h5>
-            <button type="button"
-            className="btn-close"
-            data-bs-dismiss="modal">
+            <h5 
+                className="modal-title" 
+                id="addTaskModal"
+                >{task ? 'Edit Task' : 'Add Task'}</h5>
+            <button 
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal">
             </button>
             </div>
             <div className="modal-body container">
             <div className="modal-body container">
                 <div className="row text-start">
                 <div className="col">
-                    <label className="form-label" htmlFor="task">Task</label>
+                    <label 
+                        className="form-label" 
+                        htmlFor="task"
+                        >Task</label>
                     <input 
                        type="text"
                        className="form-control"
@@ -58,8 +85,8 @@ const handleSaveClick = () => {
                        onChange={handleInputChange}/>
 
                     <label 
-                    className="form-label" 
-                    htmlFor="description">
+                        className="form-label" 
+                        htmlFor="description">
                         Description</label>
                     <textarea
                        className="form-control"
@@ -67,10 +94,9 @@ const handleSaveClick = () => {
                        name="description"
                        value={values.description}
                        onChange={handleInputChange}/>
-
                     <label 
-                    className="form-label" 
-                    htmlFor="location">
+                        className="form-label" 
+                        htmlFor="location">
                         Location</label>
                     <input 
                        className="form-control"
@@ -80,8 +106,8 @@ const handleSaveClick = () => {
                        onChange={handleInputChange}/>
 
                     <label 
-                    className="form-label" 
-                    htmlFor="limit">
+                        className="form-label" 
+                        htmlFor="limit">
                         Limit time</label>
                     <input 
                        type="time"
@@ -113,6 +139,12 @@ const handleSaveClick = () => {
             </div>
         </div>
     )
+}
+
+AddTaskModal.propTypes = {
+    task: PropTypes.object,
+    taskList: PropTypes.array.isRequired,
+    setTaskList:PropTypes.func.isRequired
 }
 
 
