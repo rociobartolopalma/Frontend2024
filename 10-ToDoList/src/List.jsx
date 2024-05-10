@@ -1,11 +1,10 @@
 import ListItem from "./ListItem"
-import PropTypes from "prop-types"
 
-const List=({taskList})=>{
+const List = ({taskList, setTaskList}) => {
 
-return (  
-    <>   
-    <div className="row">
+return (     
+    <div>
+    <div className="row m-2">
       <div className="col-6">
         <h4> Tasks</h4>
       </div>
@@ -17,24 +16,18 @@ return (
       </div>
     </div>
     {
-        taskList.map((task)=>(
-           
+        taskList.map((task)=>{
+           return(
                 <ListItem
-                key={task.id}
-                task={task}
+                  key={task.id}
+                  task={task}
+                  taskList={taskList}
+                  setTaskList={setTaskList}
                 />          
         )
-    )
+      })
     }
-    </>
-  )
-}
-
-List.PropTypes = {
-  task: PropTypes.object.isRequired,
-  taskList: PropTypes.array.isRequired,
-  setTaskList:PropTypes.func.isRequired
-}
-
+    </div>
+  )}
 
 export default List

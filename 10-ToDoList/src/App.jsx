@@ -13,13 +13,20 @@ function App() {
   }
 
   return (
+    <>
     <div className="container">
       <h1>To Do List</h1>
     <hr/>
-      <List taskList={taskList}/>
+      <List 
+        taskList={taskList}
+        setTaskList={setTaskList}
+      />
     <hr />
     <div className="text-end">
-      <AddTaskModal taskList={taskList} setTaskList={setTaskList}/>
+      <AddTaskModal 
+        taskList={taskList} 
+        setTaskList={setTaskList}
+      />
         <button
           type="button"
           className="btn btn-sm btn-outline-primary"
@@ -30,6 +37,7 @@ function App() {
       </button>
     </div>   
   </div>
+  </>
   )
 }
 
