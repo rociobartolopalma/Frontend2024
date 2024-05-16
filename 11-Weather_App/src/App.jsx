@@ -1,15 +1,17 @@
-import CityCard from './components/CityCard/index'
+import CityCard from './components/CityCard'
+import './assets/css/index.css'
+
 const App = () => {
 
-return (
-    <>
+return(
+    <div className='container'>
       <h1>Weather Api</h1>
       <hr />
       {  
         <CityCard />
       }   
-      </>
+      </div>
   )
 }
 
-export default App
+export default App 

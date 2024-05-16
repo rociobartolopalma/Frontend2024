@@ -25,4 +25,4 @@ const CityCard  = () => {
     )
 }
 
-export default CityCard
+export default CityCard 

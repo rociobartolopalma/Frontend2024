@@ -18,4 +18,4 @@ const CityCardPlaceholder = () => {
     )
 }
 
-export default CityCardPlaceholder
+export default CityCardPlaceholder 
