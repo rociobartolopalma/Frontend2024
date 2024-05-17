@@ -1,3 +1,5 @@
+import React from 'react'
+
 const CityCardPlaceholder = () => {
 
     return(
@@ -7,7 +9,7 @@ const CityCardPlaceholder = () => {
     <h5 className="card-title placeholder-glow">
       <span className="placeholder col-6"></span>
     </h5>
-        <p class="card-text placeholder-glow">
+        <p className="card-text placeholder-glow">
         <span className="placeholder col-7 m-1"></span>
         <span className="placeholder col-4"></span>
         <span className="placeholder col-4 m-1"></span>

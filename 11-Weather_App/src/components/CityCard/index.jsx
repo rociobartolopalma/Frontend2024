@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { getWeather } from "../../api/WeatherApi"
 import CityCardContent from "./CityCardContent"
 import CityCardPlaceholder from "./CityCardPlaceholder"
@@ -15,7 +15,7 @@ const CityCard  = ({city}) => {
   }, [city])
 
     return(
-        <div className="card" style={{width: '18rem'}}>
+        <div className="col-1 card m-2" style={{width: '18rem'}}>
           {
             weather ?
               <CityCardContent weather={weather}/> :
