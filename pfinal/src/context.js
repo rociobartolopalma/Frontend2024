@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react';
 import { useCallback } from 'react';
-const URL = "http://openlibrary.org/search.json?title=";
+const URL = "https://openlibrary.org/search.json?title=";
 const AppContext = React.createContext();
 
 const AppProvider = ({children}) => {
@@ -33,13 +33,13 @@ const AppProvider = ({children}) => {
                 setBooks(newBooks);
 
                 if(newBooks.length > 1){
-                    setResultTitle("Your Search Result");
+                    setResultTitle("Resultados...");
                 } else {
-                    setResultTitle("No Search Result Found!")
+                    setResultTitle("¡No se encontraron resultados de búsqueda!")
                 }
             } else {
                 setBooks([]);
-                setResultTitle("No Search Result Found!");
+                setResultTitle("¡No se encontraron resultados de búsqueda!");
             }
             setLoading(false);
         } catch(error){

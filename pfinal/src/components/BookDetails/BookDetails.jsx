@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from "../Loader/Loader";
-import coverImg from "../../images/cover_not_found.jpg";
+import coverImg from "../../images/no-disponible.jpg";
 import "./BookDetails.css";
 import {FaArrowLeft} from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +25,7 @@ const BookDetails = () => {
         if(data){
           const {description, title, covers, subject_places, subject_times, subjects} = data;
           const newBook = {
-            description: description ? description.value : "No description found",
+            description: description ? description.value : "No se encontró ninguna descripción...",
             title: title,
             cover_img: covers ? `https://covers.openlibrary.org/b/id/${covers[0]}-L.jpg` : coverImg,
             subject_places: subject_places ? subject_places.join(", ") : "No subject places found",
@@ -52,8 +52,8 @@ const BookDetails = () => {
       <div className='container'>
         <button type='button' className='flex flex-c back-btn' onClick={() => navigate("/book")}>
           <FaArrowLeft size = {22} />
-          <span className='fs-18 fw-6'>Go Back</span>
-        </button>
+          <span className='fs-18 fw-6'>Regresar</span>
+        </button> 
 
         <div className='book-details-content grid'>
           <div className='book-details-img'>

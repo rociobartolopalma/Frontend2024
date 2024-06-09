@@ -14,8 +14,8 @@ const SearchForm = () => {
     e.preventDefault();
     let tempSearchTerm = searchText.current.value.trim();
     if((tempSearchTerm.replace(/[^\w\s]/gi,"")).length === 0){
-      setSearchTerm("the lost world");
-      setResultTitle("Please Enter Something ...");
+      setSearchTerm("...");
+      setResultTitle("Por favor ingrese algo...");
     } else {
       setSearchTerm(searchText.current.value);
     }
@@ -29,9 +29,9 @@ const SearchForm = () => {
         <div className='search-form-content'>
           <form className='search-form' onSubmit={handleSubmit}>
             <div className='search-form-elem flex flex-sb bg-white'>
-              <input type = "text" className='form-control' placeholder='The Lost World ...' ref = {searchText} />
+              <input type = "text" className='form-control' placeholder='...' ref = {searchText} />
               <button type = "submit" className='flex flex-c' onClick={handleSubmit}>
-                <FaSearch className='text-purple' size = {32} />
+                <FaSearch className='text-black' size = {34} />
               </button>
             </div>
           </form>
